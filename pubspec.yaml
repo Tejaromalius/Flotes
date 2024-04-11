@@ -1,0 +1,34 @@
+name: flotes
+description: "Simple note app written with Flutter framework and synced with Google's Firebase."
+publish_to: "none"
+version: 0.0.1
+
+environment:
+  sdk: ">=3.2.6 <4.0.0"
+
+dependencies:
+  # main
+  flutter:
+    sdk: flutter
+  # debug
+  logger: ^2.1.0
+  # ui
+  json_theme: 6.4.0
+  # state, navigation, and dependency management
+  get: ^4.6.6
+  # firebase
+  firebase_core: ^2.25.5
+  firebase_auth: ^4.17.7
+  cloud_firestore: ^4.15.6
+  # authentication
+  local_auth: ^2.2.0
+  google_sign_in: ^6.2.1
+  # database
+  shared_preferences: ^2.2.2
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - assets/themes/
