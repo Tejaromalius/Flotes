@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "49990722307",
+    "project_id": "tejaromalius-flotes",
+    "storage_bucket": "tejaromalius-flotes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49990722307:android:36171c537c93d955a53f36",
+        "android_client_info": {
+          "package_name": "com.example.flotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49990722307-rq7vo8v4l2vkmp71030ujk9rnju6erkt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flotes",
+            "certificate_hash": "531cef0285bcb51fce7a2f29249216623f347888"
+          }
+        },
+        {
+          "client_id": "49990722307-ll4ag2cudv7j005h13od9nnqlipq4jre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC62jTD2-ty95C0WY0JI4LVmjAG3soMmFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49990722307-ll4ag2cudv7j005h13od9nnqlipq4jre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
