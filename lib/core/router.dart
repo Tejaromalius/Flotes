@@ -1,7 +1,4 @@
-import 'package:flotes/screens/home.dart';
-import 'package:flotes/screens/editor.dart';
-import 'package:flotes/screens/search.dart';
-import 'package:flotes/screens/splash.dart';
+import 'package:flotes/screens/index.dart' as Screens;
 
 import 'package:get/get.dart';
 
@@ -9,21 +6,21 @@ class RouteManager {
   static final routes = [
     GetPage(
       name: '/splash',
-      page: () => SplashScreen(),
+      page: () => Screens.SplashScreen(),
     ),
     GetPage(
       name: '/home',
-      page: () => HomeScreen(),
+      page: () => Screens.HomeScreen(),
       transitionDuration: Duration(milliseconds: 500),
     ),
     GetPage(
       name: '/editor',
-      page: () => EditorScreen(),
+      page: () => Screens.EditorScreen(),
       transitionDuration: Duration(milliseconds: 250),
     ),
     GetPage(
       name: '/search',
-      page: () => SearchScreen(),
+      page: () => Screens.SearchScreen(),
     ),
   ];
 }

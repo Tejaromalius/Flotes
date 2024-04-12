@@ -12,7 +12,7 @@ SharedPreferences preferences = Get.find<SharedPreferences>();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Dependencies.register();
-  await setSystemUIOverlayStyle();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(App());
 }
 
@@ -29,18 +29,9 @@ class App extends StatelessWidget {
       theme: customThemes.lightThemeData,
       darkTheme: customThemes.darkThemeData,
       themeMode: customThemes.currentThemeMode,
+      // themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       title: 'Flotes',
     );
   }
-}
-
-Future<void> setSystemUIOverlayStyle() async {
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-    systemNavigationBarColor: Colors.white,
-    systemNavigationBarIconBrightness: Brightness.dark,
-  ));
 }

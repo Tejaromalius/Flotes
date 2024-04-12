@@ -1,4 +1,7 @@
-# Flotes
+<p align="center">
+  <img width="25%" src="assets/images/logo_flotes_512.png" alt="Flotes Logo" />
+</p>
+<h1 align="center">F L O T E S</h1>
 
 Looking for a simple note app with no crazy features? Something simple to just jot down stuff? That's what Flotes is. An Android-focused app written with Flutter framework and using Firebase's authentication and Firestore as its database. Simply sign-in with Google and start syncing your notes. BUT HOLD UP!
 
@@ -12,3 +15,6 @@ App is not and neither intended to be published on APK distribution platforms li
 
 ## Contribution
 Feel free to provide any contribution, but for clearance, this project is just a showcase of skills.
+
+## Attributions
+Logo is provided by [Dicky Prayudawanto](https://iconscout.com/contributors/dickpra)
