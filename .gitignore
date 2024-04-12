@@ -22,6 +22,7 @@ pubspec.lock
 .flutter-plugins-dependencies
 
 # Directories
+**/.bak/
 **/doc/api/
 
 build/
