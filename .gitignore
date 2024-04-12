@@ -4,6 +4,7 @@
 /android/app/debug
 /android/app/profile
 /android/app/release
+/lib/services/firebase.dart
 
 *.class
 *.log

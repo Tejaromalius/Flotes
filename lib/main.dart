@@ -1,6 +1,7 @@
 import 'package:flotes/core/router.dart' show RouteManager;
 import 'package:flotes/common/themes.dart' show CustomThemes;
 import 'package:flotes/core/dependencies.dart' show Dependencies;
+import 'package:flotes/services/firebase.dart' show setupFirebase;
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Dependencies.register();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await setupFirebase();
   runApp(App());
 }
 

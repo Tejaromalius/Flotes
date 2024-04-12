@@ -11,7 +11,7 @@ Looking for a simple note app with no crazy features? Something simple to just j
 This project is only an entry point to the app development world. So expect to find unnecessary widget composition or grossly glued together code (which works!). Although I did my best to write as cleanly as possible.
 
 ## Installation
-App is not and neither intended to be published on APK distribution platforms like Play Store and etc. Thererfor, installation is manually carried out by running: `flutter run` in the project's main directory.
+Since Flotes relies on Firebase and is open-source, the Firebase credentials produced by `flutterfire` saved in `/lib/services/firebase.dart` is not tracked by Git. Therefor, you will be responsible to set up firestore for personal use Also this app is not and neither intended to be published on APK distribution platforms like Play Store and etc. Thererfor, installation is manually carried out by running: `flutter run` in the project's main directory.
 
 ## Contribution
 Feel free to provide any contribution, but for clearance, this project is just a showcase of skills.
