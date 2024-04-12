@@ -2,46 +2,41 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Client {
-  GoogleSignIn googleSignIn = GoogleSignIn();
+  late User info;
+  late bool googleUserIsSignedIn;
 
-  User? firebaseUser;
-  OAuthCredential? googleUserCredential;
-  bool googleUserIsSignedIn = false;
+  GoogleSignIn _googleSignIn = GoogleSignIn();
+  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<void> setSignInStatus() async {
-    googleUserIsSignedIn = await googleSignIn.isSignedIn();
-    print('Google user is signed in: $googleUserIsSignedIn');
+    googleUserIsSignedIn = await _googleSignIn.isSignedIn();
   }
 
   Future<void> signInUser() async {
-    await _signInGoogle();
-    await _signInFirebase();
-    await setSignInStatus();
-  }
-
-  Future<void> signOutUser() async {
-    await FirebaseAuth.instance.signOut();
-    await googleSignIn.signOut();
-    await setSignInStatus();
-  }
-
-  Future<void> _signInGoogle() async {
-    GoogleSignInAccount? googleUser = this.googleUserIsSignedIn
-        ? await googleSignIn.signInSilently()
-        : await googleSignIn.signIn();
+    // Signing in with Google
+    GoogleSignInAccount? googleUser = googleUserIsSignedIn
+        ? await _googleSignIn.signInSilently()
+        : await _googleSignIn.signIn();
 
     if (googleUser == null) throw new Exception('User sign in failed.');
 
     GoogleSignInAuthentication userAuthentication =
         await googleUser.authentication;
-    googleUserCredential = GoogleAuthProvider.credential(
-      accessToken: userAuthentication.accessToken,
-      idToken: userAuthentication.idToken,
-    );
+
+    OAuthCredential googleUserCredential = GoogleAuthProvider.credential(
+        accessToken: userAuthentication.accessToken,
+        idToken: userAuthentication.idToken);
+
+    // Signing in with Firebase
+    await _firebaseAuth.signInWithCredential(googleUserCredential);
+    info = _firebaseAuth.currentUser!;
+
+    await setSignInStatus();
   }
 
-  Future<void> _signInFirebase() async {
-    await FirebaseAuth.instance.signInWithCredential(googleUserCredential!);
-    firebaseUser = FirebaseAuth.instance.currentUser;
+  Future<void> signOutUser() async {
+    await _firebaseAuth.signOut();
+    await _googleSignIn.signOut();
+    await setSignInStatus();
   }
 }

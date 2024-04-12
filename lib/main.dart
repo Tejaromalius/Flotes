@@ -12,9 +12,9 @@ SharedPreferences preferences = Get.find<SharedPreferences>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setupFirebase();
   await Dependencies.register();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await setupFirebase();
   runApp(App());
 }
 
