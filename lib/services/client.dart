@@ -3,24 +3,26 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class Client {
   GoogleSignIn googleSignIn = GoogleSignIn();
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   User? firebaseUser;
   OAuthCredential? googleUserCredential;
   bool googleUserIsSignedIn = false;
 
   Future<void> setSignInStatus() async {
-    this.googleUserIsSignedIn = await googleSignIn.isSignedIn();
+    googleUserIsSignedIn = await googleSignIn.isSignedIn();
+    print('Google user is signed in: $googleUserIsSignedIn');
   }
 
   Future<void> signInUser() async {
     await _signInGoogle();
     await _signInFirebase();
+    await setSignInStatus();
   }
 
   Future<void> signOutUser() async {
-    await firebaseAuth.signOut();
+    await FirebaseAuth.instance.signOut();
     await googleSignIn.signOut();
+    await setSignInStatus();
   }
 
   Future<void> _signInGoogle() async {
@@ -39,7 +41,7 @@ class Client {
   }
 
   Future<void> _signInFirebase() async {
-    await firebaseAuth.signInWithCredential(googleUserCredential!);
-    firebaseUser = firebaseAuth.currentUser;
+    await FirebaseAuth.instance.signInWithCredential(googleUserCredential!);
+    firebaseUser = FirebaseAuth.instance.currentUser;
   }
 }

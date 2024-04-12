@@ -1,6 +1,7 @@
 import 'package:flotes/services/client.dart' show Client;
 import 'package:flotes/common/themes.dart' show CustomThemes;
-import 'package:flotes/core/authentication.dart' show Authentication;
+import 'package:flotes/services/biometric_authentication.dart'
+    show BiometricsAuthentication;
 
 import 'package:get/get.dart';
 import 'package:logger/logger.dart' show Logger;
@@ -31,9 +32,10 @@ class Dependencies {
   }
 
   static Future<void> _registerAuthentication() async {
-    Authentication auth = Authentication();
-    await auth.init();
-    Get.put<Authentication>(Authentication());
+    BiometricsAuthentication biometricsAuthentication =
+        BiometricsAuthentication();
+    await biometricsAuthentication.init();
+    Get.put<BiometricsAuthentication>(biometricsAuthentication);
   }
 
   static Future<void> _registerClient() async {

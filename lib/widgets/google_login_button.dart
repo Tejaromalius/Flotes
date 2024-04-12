@@ -1,5 +1,11 @@
 import 'dart:async';
+
+import 'package:flotes/services/client.dart' show Client;
+
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+
+final Client client = Get.find<Client>();
 
 class GoogleLoginButton extends StatefulWidget {
   const GoogleLoginButton({super.key});
@@ -24,7 +30,15 @@ class _GoogleLoginButtonState extends State<GoogleLoginButton> {
       width: 275,
       child: FloatingActionButton(
         heroTag: UniqueKey(),
-        onPressed: () {},
+        onPressed: () async {
+          try {
+            await client.signInUser();
+            Get.offNamed('/home');
+          } catch (exception) {
+            setState(
+                () => _logoRotationAngle = _logoRotationAngle == 0 ? 1 : 0);
+          }
+        },
         backgroundColor: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
