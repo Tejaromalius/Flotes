@@ -16,6 +16,7 @@
 app.*.symbols
 app.*.map.json
 pubspec.lock
+CHANGES.txt
 
 .DS_Store
 .flutter-plugins
@@ -23,6 +24,7 @@ pubspec.lock
 
 # Directories
 **/.bak/
+**/bak/
 **/doc/api/
 
 build/
