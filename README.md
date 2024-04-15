@@ -17,4 +17,4 @@ Since Flotes relies on Firebase and is open-source, the Firebase credentials pro
 Feel free to provide any contribution, but for clearance, this project is just a showcase of skills.
 
 ## Attributions
-Logo is provided by [Dicky Prayudawanto](https://iconscout.com/contributors/dickpra)
+Logo design done by [Dicky Prayudawanto](https://iconscout.com/contributors/dickpra)

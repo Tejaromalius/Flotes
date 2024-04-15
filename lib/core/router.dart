@@ -18,9 +18,5 @@ class RouteManager {
       page: () => Screens.EditorScreen(),
       transitionDuration: Duration(milliseconds: 250),
     ),
-    GetPage(
-      name: '/search',
-      page: () => Screens.SearchScreen(),
-    ),
   ];
 }
