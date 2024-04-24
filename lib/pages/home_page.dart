@@ -1,10 +1,10 @@
 import 'package:flotes/screens/screens.dart' as Screens;
-import 'package:flotes/widgets/widgets.dart' as CustomWidgets;
+import 'package:flotes/widgets/widgets.dart' as FlotesWidgets;
 import 'package:flotes/widgets/physics/physics.dart' as FlotesPhysics;
-import 'package:flutter/gestures.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 class HomePage extends StatefulWidget {
   final List<Widget> homeScreens = const [
@@ -43,7 +43,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomWidgets.HomeAppBar(),
+      extendBody: true,
+      appBar: FlotesWidgets.HomeAppBar(),
       body: PageView(
         children: widget.homeScreens,
         controller: _pageController,
@@ -54,11 +55,11 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: CustomWidgets.LongPressableFloatingActionButton(
+      floatingActionButton: FlotesWidgets.LongPressableFloatingActionButton(
         onLongPressed: Screens.SettingsScreen().build,
         onPressed: () => Get.toNamed('/editor'),
       ),
-      bottomNavigationBar: CustomWidgets.OvalNavigationBar(
+      bottomNavigationBar: FlotesWidgets.OvalNavigationBar(
         onDestinationSelected: _onDestinationSelected,
         currentIndex: _currentIndex,
         destinations: widget.homeScreenNavigationDestinations,
