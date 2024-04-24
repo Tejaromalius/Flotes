@@ -1,4 +1,5 @@
 import 'package:flotes/pages/pages.dart' as Pages;
+import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
@@ -7,15 +8,22 @@ class RouteManager {
     GetPage(
       name: '/splash',
       page: () => Pages.SplashPage(),
+      transition: Transition.fadeIn,
+      curve: Curves.easeInOut,
+      transitionDuration: Duration(milliseconds: 250),
     ),
     GetPage(
       name: '/home',
       page: () => Pages.HomePage(),
-      transitionDuration: Duration(milliseconds: 500),
+      transition: Transition.fadeIn,
+      curve: Curves.easeInOut,
+      transitionDuration: Duration(milliseconds: 250),
     ),
     GetPage(
       name: '/editor',
       page: () => Pages.EditorPage(),
+      transition: Transition.downToUp,
+      curve: Curves.easeInOut,
       transitionDuration: Duration(milliseconds: 250),
     ),
   ];
