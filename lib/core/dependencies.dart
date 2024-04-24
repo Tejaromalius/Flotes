@@ -2,6 +2,7 @@ import 'package:flotes/services/client.dart' show Client;
 import 'package:flotes/common/themes.dart' show CustomThemes;
 import 'package:flotes/services/biometric_authentication.dart'
     show BiometricsAuthentication;
+import 'package:flotes/services/query_manager.dart' show QueryManager;
 
 import 'package:get/get.dart';
 import 'package:logger/logger.dart' show Logger;
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart'
 class Dependencies {
   static Future<void> register() async {
     _registerLogger();
+    _registerQueryManager();
 
     await _registerSharedPreferences();
     await _registerThemes();
@@ -19,6 +21,8 @@ class Dependencies {
   }
 
   static void _registerLogger() => Get.put<Logger>(Logger());
+
+  static void _registerQueryManager() => Get.put<QueryManager>(QueryManager());
 
   static Future<void> _registerSharedPreferences() async {
     SharedPreferences database = await SharedPreferences.getInstance();
