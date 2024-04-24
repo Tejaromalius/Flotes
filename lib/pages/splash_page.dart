@@ -1,39 +1,31 @@
 import 'dart:async';
 
 import 'package:flotes/services/client.dart' show Client;
-import 'package:flotes/widgets/index.dart' as CustomWidgets;
+import 'package:flotes/widgets/widgets.dart' as CustomWidgets;
 import 'package:flotes/services/biometric_authentication.dart'
     show BiometricsAuthentication;
 
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-final Client client = Get.find<Client>();
-final Logger logger = Get.find<Logger>();
-final SharedPreferences preferences = Get.find<SharedPreferences>();
-final BiometricsAuthentication biometricsAuthentication =
-    Get.find<BiometricsAuthentication>();
-
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashPage extends StatefulWidget {
+  const SplashPage({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashState();
+  _SplashPageState createState() => _SplashPageState();
 }
 
-class _SplashState extends State<SplashScreen> {
+class _SplashPageState extends State<SplashPage> {
   bool _loginInProcess = true;
 
   @override
   void initState() {
     super.initState();
     Timer(Duration(milliseconds: 1500), () async {
-      if (client.googleUserIsSignedIn) {
+      if (Get.find<Client>().googleUserIsSignedIn) {
         try {
-          await client.signInUser();
-          await biometricsAuthentication.validate();
+          await Get.find<Client>().signInUser();
+          await Get.find<BiometricsAuthentication>().validate();
           Get.offNamed('/home');
         } catch (exception) {
           print(exception);
