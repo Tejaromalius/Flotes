@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
 
-import 'google_login_button.dart' show GoogleLoginButton;
+import 'package:flotes/widgets/buttons/buttons.dart' as FlotesButtons;
 
 import 'package:flutter/material.dart';
 
-class GoogleLoginButtonWithContainer extends StatelessWidget {
+class GoogleLoginContainer extends StatelessWidget {
   final bool _loading;
 
-  const GoogleLoginButtonWithContainer(this._loading, {super.key});
+  const GoogleLoginContainer(this._loading, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class GoogleLoginButtonWithContainer extends StatelessWidget {
         child: Container(
           alignment: Alignment(0, -0.45),
           // Display the Google login button if the container is about to be displayed
-          child: !_loading ? GoogleLoginButton() : null,
+          child: !_loading ? FlotesButtons.GoogleLoginButton() : null,
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flotes/services/client.dart' show Client;
-import 'package:flotes/widgets/widgets.dart' as CustomWidgets;
+import 'package:flotes/widgets/widgets.dart' as FlotesWidgets;
 import 'package:flotes/services/biometric_authentication.dart'
     show BiometricsAuthentication;
 
@@ -43,10 +43,10 @@ class _SplashPageState extends State<SplashPage> {
       body: Stack(
         clipBehavior: Clip.none,
         children: [
-          CustomWidgets.DoodleBackground(),
-          CustomWidgets.FlotesLogo(_loginInProcess),
-          CustomWidgets.FlotesTitle(_loginInProcess),
-          CustomWidgets.GoogleLoginButtonWithContainer(_loginInProcess),
+          FlotesWidgets.DoodleBackground(),
+          FlotesWidgets.FlotesLogo(_loginInProcess),
+          FlotesWidgets.FlotesTitle(_loginInProcess),
+          FlotesWidgets.GoogleLoginContainer(_loginInProcess),
         ],
       ),
     );

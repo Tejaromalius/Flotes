@@ -1,4 +1,4 @@
-import './custom_boxshadow.dart' show CustomBoxShadow;
+import '../decorations/custom_boxshadow.dart' show CustomBoxShadow;
 
 import 'package:flutter/material.dart';
 

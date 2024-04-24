@@ -1,7 +1,7 @@
 import 'dart:async' show Timer;
 
-import './snack_bar_error.dart';
 import 'package:flotes/services/client.dart';
+import 'package:flotes/widgets/scaffold/scaffold.dart' show showSnackBarError;
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
