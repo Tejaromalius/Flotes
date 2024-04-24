@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class QueryManager {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> getOrderedNotes() {
+  Stream<QuerySnapshot<Object?>> getOrderedNotes() {
     return _firestore
         .collection('Notes')
         .where('UserID', isEqualTo: Get.find<Client>().info.uid)
@@ -13,7 +13,7 @@ class QueryManager {
         .snapshots();
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> createAndGetNote(
+  Future<DocumentSnapshot<Object?>> createAndGetNote(
       String title, String content) async {
     final noteData = {
       'Title': title,
@@ -27,10 +27,8 @@ class QueryManager {
     return docRef.get();
   }
 
-  Future<DocumentSnapshot<Map<String, dynamic>>> updateAndGetNote(
-      DocumentSnapshot<Map<String, dynamic>> document,
-      String title,
-      String content) async {
+  Future<DocumentSnapshot<Object?>> updateAndGetNote(
+      DocumentSnapshot<Object?> document, String title, String content) async {
     final updatedData = {
       'Title': title,
       'Content': content,
@@ -41,8 +39,7 @@ class QueryManager {
     return document.reference.get();
   }
 
-  Future<void> deleteNote(
-      DocumentSnapshot<Map<String, dynamic>> document) async {
+  Future<void> deleteNote(DocumentSnapshot<Object?> document) async {
     await document.reference.delete();
   }
 }
