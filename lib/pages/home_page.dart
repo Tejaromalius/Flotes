@@ -1,6 +1,26 @@
+import 'package:flotes/screens/screens.dart' as Screens;
+import 'package:flotes/widgets/widgets.dart' as CustomWidgets;
+
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  final List<Widget> homeScreens = const [
+    Screens.NotesScreen(),
+    Screens.SearchScreen(),
+  ];
+
+  final List<NavigationDestination> homeScreenNavigationDestinations = const [
+    NavigationDestination(
+      icon: Icon(Icons.notes),
+      label: 'Notes',
+    ),
+    NavigationDestination(
+      icon: Icon(Icons.search),
+      label: 'Search',
+    ),
+  ];
+
   const HomePage({super.key});
 
   @override
@@ -8,12 +28,47 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late int _currentIndex;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = 0;
+    _pageController = PageController(initialPage: _currentIndex);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Home Page'),
+      appBar: CustomWidgets.HomeAppBar(),
+      body: PageView(
+        children: widget.homeScreens,
+        controller: _pageController,
+        onPageChanged: _onPageChanged,
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: CustomWidgets.LongPressableFloatingActionButton(
+        onLongPressed: Screens.SettingsScreen().build,
+        onPressed: () => Get.toNamed('/editor'),
+      ),
+      bottomNavigationBar: CustomWidgets.OvalNavigationBar(
+        onDestinationSelected: _onDestinationSelected,
+        currentIndex: _currentIndex,
+        destinations: widget.homeScreenNavigationDestinations,
       ),
     );
   }
+
+  void _onDestinationSelected(int index) => setState(() {
+        _currentIndex = index;
+        _pageController.animateToPage(
+          index,
+          duration: Duration(milliseconds: 400),
+          curve: Curves.ease,
+        );
+      });
+
+  void _onPageChanged(int index) => setState(() => _currentIndex = index);
 }
