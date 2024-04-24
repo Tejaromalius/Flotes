@@ -34,7 +34,11 @@ class _NotesScreenState extends State<NotesScreen> {
             physics: BouncingScrollPhysics(),
             itemCount: documents.length,
             itemBuilder: (context, index) {
-              return FlotesWidgets.NoteTile(document: documents[index]);
+              return FlotesWidgets.NoteTile(
+                document: documents[index],
+                onTap: () =>
+                    Get.toNamed('/editor', arguments: documents[index]),
+              );
             },
           );
         }

@@ -3,8 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NoteTile extends StatelessWidget {
   final DocumentSnapshot document;
+  final Function() onTap;
 
-  const NoteTile({required this.document, super.key});
+  const NoteTile({required this.document, required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,7 @@ class NoteTile extends StatelessWidget {
             tileColor: Theme.of(context).cardColor,
             title: Text(title),
             subtitle: Text(content),
-            onTap: () {
-              // Handle tap action
-            },
+            onTap: onTap,
           ),
         ),
       ],
