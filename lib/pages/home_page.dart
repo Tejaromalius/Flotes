@@ -1,5 +1,7 @@
 import 'package:flotes/screens/screens.dart' as Screens;
 import 'package:flotes/widgets/widgets.dart' as CustomWidgets;
+import 'package:flotes/widgets/physics/physics.dart' as FlotesPhysics;
+import 'package:flutter/gestures.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +48,9 @@ class _HomePageState extends State<HomePage> {
         children: widget.homeScreens,
         controller: _pageController,
         onPageChanged: _onPageChanged,
+        physics: FlotesPhysics.PageViewScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        dragStartBehavior: DragStartBehavior.start,
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
