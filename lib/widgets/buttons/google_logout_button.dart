@@ -1,7 +1,7 @@
 import 'dart:async' show Timer;
 
 import 'package:flotes/services/client.dart';
-import 'package:flotes/widgets/scaffold/scaffold.dart' show showSnackBarError;
+import 'package:flotes/widgets/scaffold/scaffold.dart' show showSnackBar;
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,11 @@ class GoogleLogoutButton extends StatelessWidget {
       );
     } else {
       Navigator.of(context).pop();
-      showSnackBarError(context, 'Logout failed. Please try again.');
+      showSnackBar(
+        context,
+        message: 'Logout failed. Please try again.',
+        color: Colors.redAccent,
+      );
     }
   }
 

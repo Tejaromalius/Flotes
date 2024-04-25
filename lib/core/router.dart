@@ -22,7 +22,7 @@ class RouteManager {
     GetPage(
       name: '/editor',
       page: () => Pages.EditorPage(),
-      transition: Transition.downToUp,
+      transition: Transition.fadeIn,
       curve: Curves.easeInOut,
       transitionDuration: Duration(milliseconds: 250),
     ),

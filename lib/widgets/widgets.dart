@@ -5,3 +5,4 @@ export './lists/lists.dart';
 export './physics/physics.dart';
 export './scaffold/scaffold.dart';
 export './splash/splash.dart';
+export './editor/editor.dart';
