@@ -38,7 +38,10 @@ class _SearchScreenState extends State<SearchScreen> {
       searchResults.add(
         FlotesWidgets.NoteTile(
           document: doc,
-          onTap: () => Get.toNamed('/editor', arguments: doc),
+          onTap: () {
+            searchFocusNode.unfocus();
+            Get.toNamed('/editor', arguments: doc);
+          },
         ),
       );
     });
