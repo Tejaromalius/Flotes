@@ -42,4 +42,13 @@ class QueryManager {
   Future<void> deleteNote(DocumentSnapshot<Object?> document) async {
     await document.reference.delete();
   }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> search(String query) {
+    return _firestore
+        .collection('Notes')
+        .where('UserID', isEqualTo: Get.find<Client>().info.uid)
+        .where('Title', isGreaterThanOrEqualTo: query)
+        .where('Title', isLessThan: query + 'z')
+        .get();
+  }
 }
