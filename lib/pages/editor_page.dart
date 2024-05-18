@@ -77,6 +77,15 @@ class _EditorPageState extends State<EditorPage> {
   }
 
   Future<void> _saveNote() async {
+    if (titleController.text.isEmpty) {
+      FlotesWidgets.showSnackBar(
+        context,
+        message: 'Title cannot be empty',
+        color: Colors.red,
+      );
+      return;
+    }
+
     this.document = document == null
         ? await Get.find<QueryManager>().createAndGetNote(
             titleController.text,

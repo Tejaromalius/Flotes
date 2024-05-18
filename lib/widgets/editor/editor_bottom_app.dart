@@ -14,7 +14,7 @@ class EditorBottomAppBar extends StatelessWidget {
         child: NavigationBar(
           height: 70,
           indicatorColor: Colors.transparent,
-          overlayColor: MaterialStateProperty.all(Colors.transparent),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
           shadowColor: Colors.transparent,
           onDestinationSelected: onItemSelection,

@@ -22,19 +22,19 @@ class _SearchScreenState extends State<SearchScreen> {
     searchController = TextEditingController();
     searchFocusNode = FocusNode();
     searchResults = [];
-
-    searchController.addListener(() async {
-      final query = searchController.text;
-      setState(() => searchResults.clear());
-      if (query == '') return;
-      await updateSearchResults(query);
-      setState(() {});
-    });
   }
 
   Future<void> updateSearchResults(String query) async {
-    final queryResult = await Get.find<QueryManager>().search(query);
-    queryResult.docs.forEach((doc) {
+    final collection = await Get.find<QueryManager>().search(query);
+
+    final queryResult = collection.docs.where((doc) {
+      return doc['Title']
+          .toString()
+          .toLowerCase()
+          .contains(query.toLowerCase());
+    });
+
+    queryResult.forEach((doc) {
       searchResults.add(
         FlotesWidgets.NoteTile(
           document: doc,
@@ -49,11 +49,20 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-      child: Column(
-        children: [
-          TextField(
+    return Scaffold(
+      appBar: AppBar(
+        surfaceTintColor: Colors.transparent,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            onEditingComplete: () async {
+              searchResults.clear();
+              final query = searchController.text;
+              setState(() {});
+              if (query == '') return;
+              await updateSearchResults(query);
+              setState(() {});
+            },
             autofocus: false,
             focusNode: searchFocusNode,
             controller: searchController,
@@ -71,8 +80,13 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
           ),
+        ),
+      ),
+      body: Column(
+        children: [
           Expanded(
             child: ListView(
+              physics: BouncingScrollPhysics(),
               children: searchResults.toList(),
             ),
           ),
